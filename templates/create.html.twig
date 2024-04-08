@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create New Product</title>
+</head>
+<body>
+    <h1>Create New Product</h1>
+    <form method="post" action="{{ path('product_store') }}">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

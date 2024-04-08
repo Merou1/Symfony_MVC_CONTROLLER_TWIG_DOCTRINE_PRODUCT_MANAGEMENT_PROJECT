@@ -3,3 +3,34 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+# config/routes.yaml
+
+product_index:
+    path: /products
+    controller: App\Controller\ProductController::index
+    methods: [GET]
+
+product_create:
+    path: /products/create
+    controller: App\Controller\ProductController::create
+    methods: [GET]
+
+product_store:
+    path: /products
+    controller: App\Controller\ProductController::store
+    methods: [POST]
+
+product_edit:
+    path: /products/{id}/edit
+    controller: App\Controller\ProductController::edit
+    methods: [GET]
+
+product_update:
+    path: /products/{id}
+    controller: App\Controller\ProductController::update
+    methods: [PUT]
+
+product_delete:
+    path: /products/{id}
+    controller: App\Controller\ProductController::delete
+    methods: [DELETE]
