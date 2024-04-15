@@ -1,18 +1,17 @@
 {% extends 'base.html.twig' %}
-{# templates/edit.html.twig #}
 
-    {% block title %}
-    Edit Product
-    {% endblock  %}
+{% block title %}Delete Product{% endblock  %}
 
 {% block body %}
-    <h1>Edit Product</h1>
-    <form method="post" action="{{ path('product_update', {'id': product.id}) }}">
-        <input type="hidden" name="_method" value="PUT">
+
+    <h1>Delete Product</h1>
+    <form method="post" action="{{ path('product_delete', {'id': product.id}) }}">
+        <input type="hidden" name="_method" value="DELETE">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name" value="{{ product.name }}"><br>
         <label for="price">Price:</label><br>
         <input type="number" id="price" name="price" value="{{ product.price }}"><br><br>
-        <button type="submit">Update</button>
+        <button type="submit">DELETE</button>
     </form>
 {% endblock  %}
+

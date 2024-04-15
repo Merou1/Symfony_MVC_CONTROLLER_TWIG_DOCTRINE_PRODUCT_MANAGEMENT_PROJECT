@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends 'base.html.twig' %}
+{% block title %}
     <title>List of Products</title>
-</head>
-<body>
+{% endblock %}
+
+{% block body %}
     <h1>List of Products</h1>
     <ul>
         {% for product in products %}
-            <li>{{ product.name }} - ${{ product.price }}</li>
+            <li>{{ product.name }} : {{ product.price }} DHs</li>
+             <a href="{{ path('product_edit', {'id': product.id}) }}">Update</a>
+             <a href="{{ path('delete_product', {'id': product.id}) }}">Supprimer</a>
         {% endfor %}
+            </br>
+            </br>
+                <a href="{{ path('product_create') }}">Ajouter</a>
+
+        
+        
     </ul>
-</body>
-</html>
+{% endblock %}

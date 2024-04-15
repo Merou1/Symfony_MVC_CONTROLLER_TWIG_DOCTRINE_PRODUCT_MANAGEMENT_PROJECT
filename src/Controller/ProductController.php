@@ -44,27 +44,33 @@ class ProductController extends AbstractController
         ]);
     }
 
+    #[Route('/products/{id}/delete',name:'delete_product',methods:['GET'])]
+    public function deleteProduct(Product $product):Response
+    {
+        return $this->render('delete.html.twig',parameters:['product'=>$product]);
+    }
+
     #[Route('/products', name: 'product_store', methods: ['POST'])]
-public function store(Request $request): Response
-{
-                        // nakhd data men formulaire
-    $name = $request->request->get('name');
-    $price = $request->request->get('price');
+    public function store(Request $request): Response
+    {
+                // nakhd data men formulaire
+        $name = $request->request->get('name');
+        $price = $request->request->get('price');
 
-        // product jdid
-    $product = new Product();
-    $product->setName($name);
-    $product->setPrice($price);
+            // product jdid
+        $product = new Product();
+        $product->setName($name);
+        $product->setPrice($price);
 
-       // persist pour sauvgarder f l bd
-    $this->entityManager->persist($product);
-    $this->entityManager->flush();
+        // persist+flush pour sauvgarder f l bd
+        $this->entityManager->persist($product);//Hey Doctrine, pay attention to this object because I might want to save it to the database late
+        $this->entityManager->flush();//When you call flush(), Doctrine looks at all the changes you've made via persist(), remove(), etc., and executes the necessary SQL queries to apply those changes to the database.
 
-    return $this->redirectToRoute('product_index');
-}
+        return $this->redirectToRoute('product_index');
+    }
 
 #[Route('/products/{id}', name: 'product_update', methods: ['PUT'])]
-public function update(Request $request, Product $product): Response
+public function update(Request $request, Product $product): Response //$product li tinstancia t instancia ela 7ssab id li f route bash nakhdu produit exact li tmodidfia
 {
  
     $name = $request->request->get('name');
